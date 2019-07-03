@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "name": "Test API Gateway",
+  "port": 8000,
+  "cache_ttl": "3600s",
+  "timeout": "3s",
+  "extra_config": {},
+  "output_encoding": "json",
+  "endpoints": [
+    {
+      "endpoint": "/post/{id}",
+      "extra_config": {
+        "github.com/devopsfaith/krakend/proxy": {
+          "sequential": true
+        }
+      },
+      "method": "GET",
+      "backend": [
+        {
+          "is_collection": false,
+          "url_pattern": "/api/v1/post/{id}",
+          "host": [
+            "http://localhost:3000"
+          ],
+          "whitelist": [
+            "Body"
+          ]
+        },
+        {
+          "is_collection": false,
+          "url_pattern": "/api/v1/categories/{resp0_Category}",
+          "host": [
+            "http://localhost:4000"
+          ]
+        }
+      ]
+    }
+  ]
+}

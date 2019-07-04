@@ -8,32 +8,42 @@
   "output_encoding": "json",
   "endpoints": [
     {
-      "endpoint": "/post/{id}",
-      "extra_config": {
-        "github.com/devopsfaith/krakend/proxy": {
-          "sequential": true
-        }
-      },
+      "endpoint": "/asdf/{id}",
       "method": "GET",
       "backend": [
         {
-          "is_collection": false,
           "url_pattern": "/api/v1/post/{id}",
           "host": [
             "http://localhost:3000"
-          ],
-          "whitelist": [
-            "Body"
           ]
         },
         {
-          "is_collection": false,
-          "url_pattern": "/api/v1/categories/{resp0_Category}",
+          "url_pattern": "/api/v1/category/{resp0_Category}",
           "host": [
             "http://localhost:4000"
-          ]
+          ],
+          "group": "category"
+        },
+        {
+          "url_pattern": "/api/v1/user/{resp0_User}",
+          "host": [
+            "http://localhost:5000"
+          ],
+          "group": "user"
+        },
+        {
+          "url_pattern": "/api/v1/company/{resp2_Company}",
+          "host": [
+            "http://localhost:2000"
+          ],
+          "group": "company"
         }
-      ]
+      ],
+      "extra_config": {
+        "github.com/devopsfaith/krakend/proxy": {
+          "sequential": true
+      }
+      }
     }
   ]
 }

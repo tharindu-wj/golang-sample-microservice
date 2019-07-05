@@ -8,7 +8,7 @@
   "output_encoding": "json",
   "endpoints": [
     {
-      "endpoint": "/asdf/{id}",
+      "endpoint": "/article/{id}",
       "method": "GET",
       "backend": [
         {
@@ -30,13 +30,6 @@
             "http://localhost:5000"
           ],
           "group": "user"
-        },
-        {
-          "url_pattern": "/api/v1/company/{resp2_Company}",
-          "host": [
-            "http://localhost:2000"
-          ],
-          "group": "company"
         }
       ],
       "extra_config": {

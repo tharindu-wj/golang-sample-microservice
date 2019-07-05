@@ -37,16 +37,15 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 	users := []model.User{}
 
 	for result.Next() {
-		var id, company int
+		var id int
 		var name, email, created_at string
-		err := result.Scan(&id, &name, &email, &company, &created_at)
+		err := result.Scan(&id, &name, &email, &created_at)
 		if err != nil {
 			panic(err.Error())
 		}
 		user.Id = id
 		user.Name = name
 		user.Email = email
-		user.Company = company
 		user.Created = created_at
 
 		users = append(users, user)
@@ -81,16 +80,15 @@ func GetUser(w http.ResponseWriter, r *http.Request) {
 	user := model.User{}
 
 	for result.Next() {
-		var id, company int
+		var id int
 		var name, email, created_at string
-		err := result.Scan(&id, &name, &email, &company, &created_at)
+		err := result.Scan(&id, &name, &email, &created_at)
 		if err != nil {
 			panic(err.Error())
 		}
 		user.Id = id
 		user.Name = name
 		user.Email = email
-		user.Company = company
 		user.Created = created_at
 	}
 
